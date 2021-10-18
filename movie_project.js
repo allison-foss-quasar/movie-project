@@ -1,51 +1,30 @@
 // console.log("Connecting to webpage")
 
-var moviesAPI = fetch('https://colossal-apricot-titanosaurus.glitch.me/movies');
+var moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
 
 
 fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
     .then(function (results) {
-        console.log(results);
+        // console.log(results);
         // results.text().then((text) =>{console.log(text)});
         results.json().then((resultsObject)=>{return resultsObject})
-        .then((movies)=>console.log(movies))
-    }).catch(function(err) {
-    console.log(err);
-})
+        .then((movies)=>{
+            console.log(movies)
+        }) //Where we get the array of movies
+    }).catch(function(err){console.log(err)})
 
 
 
 
-//post example
-// const reviewObj = {
-//     restaurant_id: 1,
-//     name: 'Codey',
-//     rating: 5,
-//     comments: "This is a really good place for coding and eating"
-// };
-// const url = 'https://codeup-restful-example.glitch.me/reviews';
-// const options = {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(reviewObj),
-// };
-// fetch(url, options)
-//     .then( response => console.log(response) ) /* review was created successfully */
-//     .catch( error => console.error(error) ); /* handle errors */
-
-
-function newMovie(movie){
-    let options= {
-        method: 'PUT', //modifies existing data
-        headers: { //what does this do????
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(movie) //
-    }
-    return fetch(`${moviesAPI}`, options)
-        .then(data=>data.json())
+function addMovie(movie){
+	let options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(movie)
+	}
+	return fetch(moviesAPI, options).then(response=>console.log("added movie: " + movie, response));
 }
 
 let newFilm = {
@@ -57,5 +36,25 @@ let newFilm = {
     director: "idk",
     plot: "nothing",
     actors: "bob",
-    id: 5
+    id: 100
 }
+
+// addMovie(newFilm);
+
+//DELETE MOVIE FUNCTION
+// function deleteMovie(id){
+// 	let options = {
+// 		method: 'DELETE',
+// 		headers: {
+// 			'Content-Type': 'application/json'
+// 		}
+// 	}
+// 	console.log(`${moviesAPI}/${movies.id}`);
+// 	fetch(`${moviesAPI}/${movies.id}`, options).then(response=>console.log("deleted movie with id " + id, response));
+// }
+//
+// deleteMovie(16)
+
+// OMBDb Stuff
+
+// fetch(`http://www.omdbapi.com/?apikey=${OMBDbAPIkey}&`)
