@@ -1,6 +1,7 @@
 // console.log("Connecting to webpage")
 
 var moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
+var OMDBapi = "http://www.omdbapi.com/?i=tt3896198&apikey=a62ca0b"
 
 
 fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
@@ -43,19 +44,19 @@ function addMovie(movie){
 	return fetch(moviesAPI, options).then(response=>console.log("added movie: " + movie, response));
 }
 
-let newFilm = {
-    title: 'Movie',
-    rating: "good",
-    poster: 5,
-    year: 500,
-    genre: "comedy",
-    director: "idk",
-    plot: "nothing",
-    actors: "bob",
-    id: 25
-}
+// let newFilm = {
+//     title: 'Movie',
+//     rating: "good",
+//     poster: 5,
+//     year: 500,
+//     genre: "comedy",
+//     director: "idk",
+//     plot: "nothing",
+//     actors: "bob",
+//     id: 25
+// }
 
-addMovie(newFilm);
+// addMovie(newFilm);
 
 //DELETE MOVIE FUNCTION
 function deleteMovie(id){
