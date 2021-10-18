@@ -16,7 +16,7 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 
 
 
-//post example 
+//post example
 // const reviewObj = {
 //     restaurant_id: 1,
 //     name: 'Codey',
@@ -34,3 +34,28 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 // fetch(url, options)
 //     .then( response => console.log(response) ) /* review was created successfully */
 //     .catch( error => console.error(error) ); /* handle errors */
+
+
+function newMovie(movie){
+    let options= {
+        method: 'PUT', //modifies existing data
+        headers: { //what does this do????
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(movie) //
+    }
+    return fetch(`${moviesAPI}`, options)
+        .then(data=>data.json())
+}
+
+let newFilm = {
+    title: 'Movie',
+    rating: "good",
+    poster: 5,
+    year: 500,
+    genre: "comedy",
+    director: "idk",
+    plot: "nothing",
+    actors: "bob",
+    id: 5
+}
