@@ -17,10 +17,12 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
         		`<h4>Genre: ${movie.genre} || Director: ${movie.director}</h4>${movie.year}` +
         		`<img src="${movie.poster}" style="width: 25em">` +
         		`<h4>Rating: ${movie.rating}</h4><h6>Description: ${movie.plot}</h6>` +
-        		'<div class="inline-flex m-2"><button type="button" class="modify">Modify</button><button type="button" class="delete">Delete</button></div>' +
+        		'<div class="inline-flex m-2"><button type="button" class="modify">Modify</button><button type="button" class="delete" data-id="${movie.id}">Delete</button></div>' +
 				'</div>'
 			});
 			document.getElementById('movies').innerHTML = html;
+			//add click listener
+			
         }) //Where we get the array of movies
     }).catch(function(err){console.log(err)});
 
