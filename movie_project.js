@@ -6,9 +6,9 @@ var moviesAPI = fetch('https://colossal-apricot-titanosaurus.glitch.me/movies');
 fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
     .then(function (results) {
         console.log(results);
-        results.text().then((text) =>{console.log(text)});
+        // results.text().then((text) =>{console.log(text)});
         results.json().then((resultsObject)=>{return resultsObject})
-        .then((movies)=>console.log(movies[0]))
+        .then((movies)=>console.log(movies))
     }).catch(function(err) {
     console.log(err);
 })
