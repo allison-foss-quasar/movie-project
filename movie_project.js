@@ -42,18 +42,20 @@ let newFilm = {
 // addMovie(newFilm);
 
 //DELETE MOVIE FUNCTION
-// function deleteMovie(id){
-// 	let options = {
-// 		method: 'DELETE',
-// 		headers: {
-// 			'Content-Type': 'application/json'
-// 		}
-// 	}
-// 	console.log(`${moviesAPI}/${movies.id}`);
-// 	fetch(`${moviesAPI}/${movies.id}`, options).then(response=>console.log("deleted movie with id " + id, response));
-// }
-//
-// deleteMovie(16)
+function deleteMovie(id){
+	let options = {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}
+	console.log(`${moviesAPI}/${id}`);
+	fetch(`${moviesAPI}/${id}`, options).then(response=>{
+		console.log("deleted movie with id " + id, response);
+		fetch(moviesAPI).then(data=>console.log(data))});
+}
+
+deleteMovie(16)
 
 // OMBDb Stuff
 
