@@ -1,6 +1,7 @@
 // console.log("Connecting to webpage")
 
 var moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
+
 var OMDBapi = "http://www.omdbapi.com/?i=tt3896198&apikey=a62ca0b"
 
 
@@ -30,6 +31,17 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 					deleteMovie(btns[i].dataset.id);
 				})
 			}
+
+			document.getElementById('add').addEventListener("click", function(){
+				let movieTitle = document.getElementById('movie-search').value;
+				console.log(movieTitle)
+				fetch(`http://www.omdbapi.com/?apikey=a62ca0b&t=${movieTitle}&plot=full`)
+					.then(data=>data.json()).then(function(data){
+						console.log(data);
+						addMovie(data);
+					}
+				)
+			})
         }); //Where we get the array of movies
     }).catch(function(err){console.log(err)});
 
