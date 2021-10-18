@@ -38,7 +38,16 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 				fetch(`http://www.omdbapi.com/?apikey=a62ca0b&t=${movieTitle}&plot=full`)
 					.then(data=>data.json()).then(function(data){
 						console.log(data);
-						addMovie(data);
+					let newFilm = {
+						title: data.Title,
+						rating: data.imdbRating,
+						poster: "",
+						year: data.Year,
+						actors: data.Actors,
+						plot: data.Plot,
+						genre: data.Genre
+					}
+						addMovie(newFilm);
 					}
 				)
 			})
