@@ -43,19 +43,19 @@ function addMovie(movie){
 	return fetch(moviesAPI, options).then(response=>console.log("added movie: " + movie, response));
 }
 
-// let newFilm = {
-//     title: 'Movie',
-//     rating: "good",
-//     poster: 5,
-//     year: 500,
-//     genre: "comedy",
-//     director: "idk",
-//     plot: "nothing",
-//     actors: "bob",
-//     id: 100
-// }
+let newFilm = {
+    title: 'Movie',
+    rating: "good",
+    poster: 5,
+    year: 500,
+    genre: "comedy",
+    director: "idk",
+    plot: "nothing",
+    actors: "bob",
+    id: 25
+}
 
-// addMovie(newFilm);
+addMovie(newFilm);
 
 //DELETE MOVIE FUNCTION
 function deleteMovie(id){
@@ -67,10 +67,9 @@ function deleteMovie(id){
 	}
 	fetch(`${moviesAPI}/${id}`, options).then(response=>{
 		console.log("deleted movie with id " + id, response);
+		document.location.reload();
 		fetch(moviesAPI).then(data=>console.log(data.json()))});
 }
-
-// deleteMovie(7)
 
 // OMBDb Stuff
 
