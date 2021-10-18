@@ -55,7 +55,7 @@ function deleteMovie(id){
 		fetch(moviesAPI).then(data=>console.log(data))});
 }
 
-deleteMovie(16)
+// deleteMovie(16)
 
 // OMBDb Stuff
 
