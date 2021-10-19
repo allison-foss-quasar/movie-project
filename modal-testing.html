@@ -20,52 +20,30 @@
 		<div class="modal-dialog modal-dialog-centered"> <!--What's happening here?-->
 			<div class="modal-content"> <!--What's happening here?-->
 				<div class="modal-header"> <!--What's happening here?-->
-					<h5 class="modal-title" id="editFeatureLabel">Choose feature to edit:</h5>
+					<h5 class="modal-title" id="editFeatureLabel">Edit features:</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body d-flex justify-content-around">
-					<button class="btn btn-primary" data-bs-target="#titleModal" data-bs-toggle="collapse">Title</button>
-					<button class="btn btn-primary" data-bs-target="#plotModal" data-bs-toggle="collapse">Plot</button>
-					<button class="btn btn-primary" data-bs-target="#ratingModal" data-bs-toggle="collapse">Rating</button>
+					<div class="card card-body">
+						<label class="form-label" for="newTitle">New Title:</label>
+						<input type="text" id="newTitle" class="form-control" value="<!--${movie.title}-->">
+						
+						<label class="form-label" for="newPlot">New Plot Description:</label>
+						<textarea id="newPlot" class="form-control"
+						          aria-label="textarea"><!--${movie.plot}--></textarea>
+						
+						<label class="form-label" for="newRating">New Rating:</label>
+						<input type="text" id="newRating" class="form-control" value="<!--${movie.rating}-->">
+					
+					</div>
 				</div>
-				<div class="modal-body">
-					<div class="collapse" id="titleModal">
-						<div class="card card-body">
-							<div class="mb-4">
-								<label class="form-label" for="newTitle">New Title:</label>
-								<input type="text" id="newTitle" class="form-control">
-							</div>
-							<div class="modal-footer">
-								<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-							</div>
-						</div>
-					</div>
-					<div class="collapse" id="plotModal">
-						<div class="card card-body">
-							<div class="mb-4">
-								<label class="form-label" for="newPlot">New Plot Description:</label>
-								<textarea id="newPlot" class="form-control" aria-label="textarea"></textarea>
-							</div>
-							<div class="modal-footer">
-								<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-							</div>
-						</div>
-					</div>
-					<div class="collapse" id="ratingModal">
-						<div class="card card-body">
-							<div class="mb-4">
-								<label class="form-label" for="newRating">New Rating:</label>
-								<input type="text" id="newRating" class="form-control">
-							</div>
-							<div class="modal-footer">
-								<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
-							</div>
-						</div>
-					</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<a class="btn btn-primary" data-bs-toggle="modal" href="#editFeatures" role="button">Modify</a>
 <!--MODAL END-->
 
