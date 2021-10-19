@@ -1,8 +1,6 @@
-// console.log("Connecting to webpage")
+let moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
 
-var moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
-
-var OMDBapi = "http://www.omdbapi.com/?i=tt3896198&apikey=a62ca0b"
+let OMDBapi = "http://www.omdbapi.com/?i=tt3896198&apikey=a62ca0b"
 
 fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
     .then(function(results){
@@ -32,25 +30,26 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 			document.getElementById('add').addEventListener("click", function(){
 				let movieTitle = document.getElementById('movie-search').value;
 				console.log(movieTitle)
-				fetch(`http://www.omdbapi.com/?apikey=a62ca0b&t=${movieTitle}&plot=full`)
-					.then(data=>data.json()).then(function(data){
+				fetch(`${moviesAPI}&t=${movieTitle}&plot=full`)
+					.then(data=>data.json())
+					.then(function(data) {
 						console.log(data);
-					let newFilm = {
-						title: data.Title,
-						rating: data.imdbRating,
-						poster: "",
-						year: data.Year,
-						actors: data.Actors,
-						plot: data.Plot,
-						genre: data.Genre,
-						director: data.Director
-					}
+						let newFilm = {
+							title: data.Title,
+							rating: data.imdbRating,
+							poster: data.Poster,
+							year: data.Year,
+							actors: data.Actors,
+							plot: data.Plot,
+							genre: data.Genre,
+							director: data.Director
+						}
 						addMovie(newFilm);
-					}
-				)
+					})
 			})
         }); //Where we get the array of movies
-    }).catch(function(err){console.log(err)});
+    })
+    .catch(function(err){console.log(err)});
 
 function addMovie(movie){
 	let options = {

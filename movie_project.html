@@ -10,17 +10,23 @@
 </head>
 <body>
 <nav class="navbar sticky-top navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Movie List</a>
-        <button type="button" class="add">Add Movie</button>
+    <a class="container-fluid">
+        <a class="navbar-brand" href="#"><h1>MovieAppByA&F</h1></a>
+        <a class="nav-link active" aria-current="page" href="#add">Add Movie</a>
     </div>
 </nav>
-<div id="movies"></div>
-<label for="movie-search" class="form-label"></label>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon3">Please type your movie here</span>
-    <input type="text" class="form-control" id="movie-search" aria-describedby="basic-addon3">
-    <button type="button" id="add">Add Movie</button>
+<div class="container">
+	<div id="movies"></div>
+	<label for="movie-search" class="form-label m-3 "><h2>Add a movie to your list here:</h2></label>
+	<div class="input-group">
+		<span class="input-group-text" id="basic-addon3">Add Movie</span>
+		<input type="text" class="form-control" id="movie-search" aria-describedby="basic-addon3">
+		<button type="button" id="add">Submit</button>
+	</div>
+</div>
+
+<div class="footer d-flex justify-content-between m-5">
+	<div class="copyright">Copyright &copy; 2021</div><span>Product By Allison & Foss</span><a href="#">Back to top</a>
 </div>
 <!--carousel idea for movie pictures-->
 <!--<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">-->
