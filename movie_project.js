@@ -14,8 +14,45 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
         		`<h6>Genre: ${movie.genre} // Director: ${movie.director}</h6>${movie.year}` +
         		`<img src="${movie.poster}" style="width: 25em">` +
         		`<h4>Rating: ${movie.rating}</h4><h6>Description: ${movie.plot}</h6>` +
-        		`<div class="inline-flex m-2"><button type="button" class="modify btn btn-info" data-id="${movie.id}">Modify</button><button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
-				'</div>'
+        		`<div class="inline-flex m-2">
+					<a class="btn btn-info" data-bs-toggle="modal" data-id="${movie.id}" href="#edit${movie.id}" role="button">Modify</a>` +
+					//<button type="button" class="modify btn btn-info" data-id="${movie.id}" data-bs-toggle="modal">Modify</button>
+					`<button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
+				'</div>' +
+					//MODALS FOR EACH MOVIE CARD??????
+					`<div class="modal fade" id="edit${movie.id}" aria-hidden="true" aria-labelledby="edit${movie.id}"
+						 tabIndex="-1"> <!--What's happening here?-->
+						<div class="modal-dialog modal-dialog-centered"> <!--What's happening here?-->
+							<div class="modal-content"> <!--What's happening here?-->
+								<div class="modal-header"> <!--What's happening here?-->
+									<h5 class="modal-title" id="editFeatureLabel">Edit features:</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+											aria-label="Close"></button>
+								</div>
+								<div class="modal-body d-flex justify-content-around">
+									<div class="card card-body">
+										<label class="form-label" htmlFor="newTitle">New Title:</label>
+										<input type="text" id="newTitle${movie.id}" class="form-control" value="${movie.title}">
+
+										<label class="form-label" htmlFor="newPlot">New Plot Description:</label>
+										<textarea id="newPlot${movie.id}" class="form-control" aria-label="textarea">${movie.plot}</textarea>
+
+										<label class="form-label" htmlFor="newRating">New Rating:</label>
+										<input type="text" id="newRating${movie.id}" class="form-control" value="${movie.rating}">
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button class="btn btn-primary" data-bs-dismiss="modal" id="newInfo${movie.id}">Submit</button>
+								</div>
+							</div>
+						</div>
+					</div>`
+					//END MODALS FOR EACH MOVIE CARD
+
+
+
+
+
 			});
 
 			document.getElementById('movies').innerHTML = html;
@@ -26,6 +63,13 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 					deleteMovie(btns[i].dataset.id);
 				})
 			}
+
+			// modBtns = document.getElementsByClassName("modify");
+			// for(let i = 0; i < modBtns.length; i++){
+			// 	modBtns[i].addEventListener("click", function(){
+			//
+			// 	})
+			// }
 
 			document.getElementById('add').addEventListener("click", function(){
 				let movieTitle = document.getElementById('movie-search').value;
@@ -86,7 +130,9 @@ function modifyMovie(id){
 		body: JSON.stringify(obj)
 	}
 	let obj = {
-
+		title: ``,
+		rating: ``,
+		plot: ``
 	}
 	return fetch(moviesAPI, options).then(response=>console.log("modified movie: " + movie, response));
 }
