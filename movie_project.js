@@ -108,7 +108,10 @@ function addMovie(movie){
 		},
 		body: JSON.stringify(movie)
 	}
-	return fetch(moviesAPI, options).then(response=>console.log("added movie: " + movie, response));
+	return fetch(moviesAPI, options).then(response=>{
+		console.log("added movie: " + movie, response);
+		document.location.reload();
+		});
 }
 
 
@@ -139,5 +142,8 @@ function modifyMovie(id, title, rating, plot){
 		})
 	}
 
-	return fetch(`${moviesAPI}/${id}`, options).then(response=>console.log("modified movie: " + id, response));
+	return fetch(`${moviesAPI}/${id}`, options).then(response=>{
+		console.log("modified movie: " + id, response);
+		document.location.reload()
+		});
 }
