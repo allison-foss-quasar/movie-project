@@ -2,6 +2,20 @@ let moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
 
 let OMDBapi = "http://www.omdbapi.com/?i=tt3896198&apikey=a62ca0b"
 
+switch(document.readyState) {
+	case "loading":
+		console.log("loading...");
+	case "interactive":
+		console.log("interactive...");
+	// const span = document.createElement("span");
+	// span.textContent = "A <span> element.";
+	// document.body.appendChild(span);
+	case "complete":
+		console.log("complete");
+		break;
+}
+
+
 fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
     .then(function(results){
         results.json().then((resultsObject)=>{return resultsObject})
