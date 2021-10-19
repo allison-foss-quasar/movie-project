@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Modals</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<style>
+		.container{
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center">
+
+<!--MODAL START-->
+	<div class="modal fade" id="editFeatures" aria-hidden="true" aria-labelledby="editFeatures"
+	     tabindex="-1"> <!--What's happening here?-->
+		<div class="modal-dialog modal-dialog-centered"> <!--What's happening here?-->
+			<div class="modal-content"> <!--What's happening here?-->
+				<div class="modal-header"> <!--What's happening here?-->
+					<h5 class="modal-title" id="editFeatureLabel">Choose feature to edit:</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body d-flex justify-content-around">
+					<button class="btn btn-primary" data-bs-target="#titleModal" data-bs-toggle="collapse">Title</button>
+					<button class="btn btn-primary" data-bs-target="#plotModal" data-bs-toggle="collapse">Plot</button>
+					<button class="btn btn-primary" data-bs-target="#ratingModal" data-bs-toggle="collapse">Rating</button>
+				</div>
+				<div class="modal-body">
+					<div class="collapse" id="titleModal">
+						<div class="card card-body">
+							<div class="mb-4">
+								<label class="form-label" for="newTitle">New Title:</label>
+								<input type="text" id="newTitle" class="form-control">
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+							</div>
+						</div>
+					</div>
+					<div class="collapse" id="plotModal">
+						<div class="card card-body">
+							<div class="mb-4">
+								<label class="form-label" for="newPlot">New Plot Description:</label>
+								<textarea id="newPlot" class="form-control" aria-label="textarea"></textarea>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+							</div>
+						</div>
+					</div>
+					<div class="collapse" id="ratingModal">
+						<div class="card card-body">
+							<div class="mb-4">
+								<label class="form-label" for="newRating">New Rating:</label>
+								<input type="text" id="newRating" class="form-control">
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a class="btn btn-primary" data-bs-toggle="modal" href="#editFeatures" role="button">Modify</a>
+<!--MODAL END-->
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script>
+	"use strict"
+	
+	
+</script>
+</body>
+</html>
