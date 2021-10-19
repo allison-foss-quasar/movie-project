@@ -42,7 +42,7 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button class="btn btn-primary" data-bs-dismiss="modal" id="newInfo${movie.id}">Submit</button>
+									<button class="btn btn-primary submit" data-bs-dismiss="modal" id="${movie.id}">Submit</button>
 								</div>
 							</div>
 						</div>
@@ -64,12 +64,17 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 				})
 			}
 
-			// modBtns = document.getElementsByClassName("modify");
-			// for(let i = 0; i < modBtns.length; i++){
-			// 	modBtns[i].addEventListener("click", function(){
-			//
-			// 	})
-			// }
+			newInfoBtns = document.getElementsByClassName("submit");
+			for(let i = 0; i < newInfoBtns.length; i++){
+				newInfoBtns[i].addEventListener("click", function(){
+					console.log(newInfoBtns[i]);
+					let testTitle = document.querySelector('#newTitle'+ newInfoBtns[i].id).value
+					let testPlot = document.querySelector('#newPlot'+ newInfoBtns[i].id).value
+					let testRating = document.querySelector('#newRating'+ newInfoBtns[i].id).value
+					console.log(testTitle);
+					modifyMovie(newInfoBtns[i].id, testTitle, testRating, testPlot);
+				})
+			}
 
 			document.getElementById('add').addEventListener("click", function(){
 				let movieTitle = document.getElementById('movie-search').value;
@@ -121,18 +126,18 @@ function deleteMovie(id){
 		fetch(moviesAPI).then(data=>console.log(data.json()))});
 }
 
-function modifyMovie(id){
+function modifyMovie(id, title, rating, plot){
 	let options = {
-		method: 'PUT',
+		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify(obj)
+		body: JSON.stringify({
+			title: title,
+			rating: rating,
+			plot: plot
+		})
 	}
-	let obj = {
-		title: ``,
-		rating: ``,
-		plot: ``
-	}
-	return fetch(moviesAPI, options).then(response=>console.log("modified movie: " + movie, response));
+
+	return fetch(`${moviesAPI}/${id}`, options).then(response=>console.log("modified movie: " + id, response));
 }
