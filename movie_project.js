@@ -144,6 +144,6 @@ function modifyMovie(id, title, rating, plot){
 
 	return fetch(`${moviesAPI}/${id}`, options).then(response=>{
 		console.log("modified movie: " + id, response);
-		document.location.reload()
+		document.location.reload();
 		});
 }
