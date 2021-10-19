@@ -14,7 +14,7 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
         		`<h6>Genre: ${movie.genre} // Director: ${movie.director}</h6>${movie.year}` +
         		`<img src="${movie.poster}" style="width: 25em">` +
         		`<h4>Rating: ${movie.rating}</h4><h6>Description: ${movie.plot}</h6>` +
-        		`<div class="inline-flex m-2"><button type="button" class="modify">Modify</button><button type="button" class="delete" data-id="${movie.id}">Delete</button></div>` +
+        		`<div class="inline-flex m-2"><button type="button" class="modify btn btn-info" data-id="${movie.id}">Modify</button><button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
 				'</div>'
 			});
 
@@ -30,7 +30,7 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 			document.getElementById('add').addEventListener("click", function(){
 				let movieTitle = document.getElementById('movie-search').value;
 				console.log(movieTitle)
-				fetch(`${moviesAPI}&t=${movieTitle}&plot=full`)
+				fetch(`${OMDBapi}&t=${movieTitle}&plot=full`)
 					.then(data=>data.json())
 					.then(function(data) {
 						console.log(data);
@@ -77,3 +77,16 @@ function deleteMovie(id){
 		fetch(moviesAPI).then(data=>console.log(data.json()))});
 }
 
+function modifyMovie(id){
+	let options = {
+		method: 'PUT',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(obj)
+	}
+	let obj = {
+
+	}
+	return fetch(moviesAPI, options).then(response=>console.log("modified movie: " + movie, response));
+}
