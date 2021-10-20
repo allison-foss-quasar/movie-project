@@ -82,7 +82,7 @@ img {
     height: 25em;
 }
 
-.navbar, #addMovie, .footer{
+.navbar, #addMovie, .footer {
     background-color: black;
     color: lightyellow;
 }
