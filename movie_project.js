@@ -1,31 +1,35 @@
 let moviesAPI = 'https://colossal-apricot-titanosaurus.glitch.me/movies'
-
 let OMDBapi = "http://www.omdbapi.com/?i=tt3896198&apikey=a62ca0b"
 
 fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
-    .then(function(results){
-        results.json().then((resultsObject)=>{return resultsObject})
-        .then((movies)=>{
-        	console.log(movies);
-        	let html = '';
-        	movies.forEach(movie=> {
-        		html+= '<div class="card d-flex flex-column align-items-center m-2">' +
+.then(function (results) {
+	results.json().then((resultsObject) => {
+		return resultsObject
+	})
+	.then((movies) => {
+		console.log(movies);
+		let html = '';
 
-        		`<img id="${movie.id}" src="${movie.poster}" type="button">` +
+		//GENERATE CARDS HERE
+		movies.forEach(movie => {
+			html += '<div class="card d-flex flex-column align-items-center m-2">' +
 
-        		`<div id="movieInfo${movie.id}" class="d-none">`+
-					`<h4 id="title${movie.id}" class="text-center">${movie.title}</h4>` +
-					`<h6 class="text-center">${movie.genre}<br>` +
-					`Director: ${movie.director}</h6> <div class="text-center">Year: ${movie.year} // Rating: ${movie.rating}</div>
+				`<img id="${movie.id}" src="${movie.poster}" type="button">` + //IMAGES
+
+				`<div id="movieInfo${movie.id}" class="d-none">` + //BEGIN DIV FOR ALL MOVIE INFO
+				`<h4 id="title${movie.id}" class="text-center">${movie.title}</h4>` +
+				`<h6 class="text-center">${movie.genre}<br>` +
+				`Director: ${movie.director}</h6> <div class="text-center">Year: ${movie.year} // Rating: ${movie.rating}</div>
 					<div class="m-3" id="plot${movie.id}">${movie.plot}</div>` +
-					'</div>' +
-					'<div class="inline-flex m-2">' +
-						`<a class="btn btn-info" data-bs-toggle="modal" data-id="${movie.id}" href="#edit${movie.id}" role="button">Modify</a>` +
-						`<button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
-				'</div>' +
+				'</div>' + //END DIV FOR ALL MOVIE INFO
 
-					//MODALS FOR EACH MOVIE CARD??????
-					`<div class="modal fade" id="edit${movie.id}" aria-hidden="true" aria-labelledby="edit${movie.id}"
+				'<div class="inline-flex m-2">' + //BUTTONS DIV
+					`<a class="btn btn-info" data-bs-toggle="modal" data-id="${movie.id}" href="#edit${movie.id}" role="button">Modify</a>` +
+					`<button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
+				'</div>' + //END BUTTONS DIV
+
+				//MODALS FOR EACH MOVIE CARD??????
+				`<div class="modal fade" id="edit${movie.id}" aria-hidden="true" aria-labelledby="edit${movie.id}"
 						 tabIndex="-1"> <!--What's happening here?-->
 						<div class="modal-dialog modal-dialog-centered"> <!--What's happening here?-->
 							<div class="modal-content"> <!--What's happening here?-->
@@ -52,13 +56,10 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 							</div>
 						</div>
 					</div>`
-					//END MODALS FOR EACH MOVIE CARD
+			//END MODALS FOR EACH MOVIE CARD
 
 
-
-
-
-			});
+		});
 
 			document.getElementById('movies').innerHTML = html;
 
@@ -125,7 +126,6 @@ function addMovie(movie){
 		document.location.reload();
 		});
 }
-
 
 //DELETE MOVIE FUNCTION
 function deleteMovie(id){
