@@ -9,11 +9,12 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
         	console.log(movies);
         	let html = '';
         	movies.forEach(movie=> {
-        		html+= '<div class="card d-flex flex-column align-items-center">' +
-        		`<h1>${movie.title}</h1>` +
-        		`<h6>Genre: ${movie.genre} // Director: ${movie.director}</h6>${movie.year}` +
-        		`<img src="${movie.poster}" style="width: 25em">` +
-        		`<h4>Rating: ${movie.rating}</h4><h6>Description: ${movie.plot}</h6>` +
+        		html+= '<div class="card d-flex flex-column align-items-center m-2">' +
+        		`<img id="${movie.id}" src="${movie.poster}" type="button">` +
+        		// `<h4>${movie.title}</h4>` +
+        		`<h6 class="text-center">${movie.genre}<br>` +
+        		`Director: ${movie.director}</h6> Year: ${movie.year} // Rating: ${movie.rating}
+				<div class="m-3 d-none" id="plot${movie.id}">${movie.plot}</div>` +
         		`<div class="inline-flex m-2">
 					<a class="btn btn-info" data-bs-toggle="modal" data-id="${movie.id}" href="#edit${movie.id}" role="button">Modify</a>` +
 					//<button type="button" class="modify btn btn-info" data-id="${movie.id}" data-bs-toggle="modal">Modify</button>
@@ -31,13 +32,13 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 								</div>
 								<div class="modal-body d-flex justify-content-around">
 									<div class="card card-body">
-										<label class="form-label" htmlFor="newTitle">New Title:</label>
+										<label class="form-label">New Title:</label>
 										<input type="text" id="newTitle${movie.id}" class="form-control" value="${movie.title}">
 
-										<label class="form-label" htmlFor="newPlot">New Plot Description:</label>
+										<label class="form-label">New Plot Description:</label>
 										<textarea id="newPlot${movie.id}" class="form-control" aria-label="textarea">${movie.plot}</textarea>
 
-										<label class="form-label" htmlFor="newRating">New Rating:</label>
+										<label class="form-label">New Rating:</label>
 										<input type="text" id="newRating${movie.id}" class="form-control" value="${movie.rating}">
 									</div>
 								</div>
@@ -74,6 +75,13 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 					console.log(testTitle);
 					modifyMovie(newInfoBtns[i].id, testTitle, testRating, testPlot);
 				})
+			}
+
+			imgBtns = document.getElementsByTagName("img");
+			for(let i = 0; i < newInfoBtns.length; i++){
+				imgBtns[i].addEventListener("click", function(){
+					$(`#plot${imgBtns[i].id}`).removeClass('d-none');
+				});
 			}
 
 			document.getElementById('add').addEventListener("click", function(){
