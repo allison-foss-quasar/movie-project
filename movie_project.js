@@ -10,16 +10,20 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
         	let html = '';
         	movies.forEach(movie=> {
         		html+= '<div class="card d-flex flex-column align-items-center m-2">' +
+
         		`<img id="${movie.id}" src="${movie.poster}" type="button">` +
-        		// `<h4>${movie.title}</h4>` +
-        		`<h6 class="text-center">${movie.genre}<br>` +
-        		`Director: ${movie.director}</h6> Year: ${movie.year} // Rating: ${movie.rating}
-				<div class="m-3 d-none" id="plot${movie.id}">${movie.plot}</div>` +
-        		`<div class="inline-flex m-2">
-					<a class="btn btn-info" data-bs-toggle="modal" data-id="${movie.id}" href="#edit${movie.id}" role="button">Modify</a>` +
-					//<button type="button" class="modify btn btn-info" data-id="${movie.id}" data-bs-toggle="modal">Modify</button>
-					`<button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
+
+        		`<div id="movieInfo${movie.id}" class="d-none">`+
+					`<h4 id="title${movie.id}" class="text-center">${movie.title}</h4>` +
+					`<h6 class="text-center">${movie.genre}<br>` +
+					`Director: ${movie.director}</h6> <div class="text-center">Year: ${movie.year} // Rating: ${movie.rating}</div>
+					<div class="m-3" id="plot${movie.id}">${movie.plot}</div>` +
+					'</div>' +
+					'<div class="inline-flex m-2">' +
+						`<a class="btn btn-info" data-bs-toggle="modal" data-id="${movie.id}" href="#edit${movie.id}" role="button">Modify</a>` +
+						`<button type="button" class="delete btn btn-danger" data-id="${movie.id}">Delete</button></div>` +
 				'</div>' +
+
 					//MODALS FOR EACH MOVIE CARD??????
 					`<div class="modal fade" id="edit${movie.id}" aria-hidden="true" aria-labelledby="edit${movie.id}"
 						 tabIndex="-1"> <!--What's happening here?-->
@@ -80,7 +84,7 @@ fetch('https://colossal-apricot-titanosaurus.glitch.me/movies')
 			imgBtns = document.getElementsByTagName("img");
 			for(let i = 0; i < newInfoBtns.length; i++){
 				imgBtns[i].addEventListener("click", function(){
-					$(`#plot${imgBtns[i].id}`).removeClass('d-none');
+					$(`#movieInfo${imgBtns[i].id}`).toggleClass('d-none');
 				});
 			}
 

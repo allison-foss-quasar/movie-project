@@ -15,7 +15,7 @@
 	<span class="loader"><span class="loader-inner"></span></span>
 </div>
 
-<nav class="navbar sticky-top navbar-light bg-light p-3">
+<nav class="navbar sticky-top navbar-light p-3">
     <a class="container-fluid">
         <a class="navbar-brand" href="#"><h1>MyMoviesApp</h1></a>
         <a class="nav-link active" aria-current="page" href="#add">Add Movie</a>
@@ -23,40 +23,23 @@
 </nav>
 <div class="container">
 	<div id="movies" class="d-flex flex-wrap justify-content-around"></div>
+</div>
+
+<div id="addMovie" class="p-5 mt-3">
 	<label for="movie-search" class="form-label m-3"><h2>Add a movie to your list here:</h2></label>
 	<div class="input-group">
 		<span class="input-group-text" id="basic-addon3">Add Movie</span>
 		<input type="text" class="form-control" id="movie-search" aria-describedby="basic-addon3">
 		<button type="button" id="add">Submit</button>
 	</div>
+	
+	<div class="footer d-flex justify-content-between m-5">
+		<div class="copyright">Copyright &copy; 2021</div>
+		<span>Product By Allison & Foss</span><a href="#">Back to top</a>
+	</div>
 </div>
 
-<div class="footer d-flex justify-content-between m-5">
-	<div class="copyright">Copyright &copy; 2021</div><span>Product By Allison & Foss</span><a href="#">Back to top</a>
-</div>
 
-<!--carousel idea for movie pictures-->
-<!--<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">-->
-<!--    <div class="carousel-inner">-->
-<!--        <div class="carousel-item active">-->
-<!--            <img src="..." class="d-block w-100" alt="...">-->
-<!--        </div>-->
-<!--        <div class="carousel-item">-->
-<!--            <img src="..." class="d-block w-100" alt="...">-->
-<!--        </div>-->
-<!--        <div class="carousel-item">-->
-<!--            <img src="..." class="d-block w-100" alt="...">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">-->
-<!--        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--        <span class="visually-hidden">Previous</span>-->
-<!--    </button>-->
-<!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">-->
-<!--        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--        <span class="visually-hidden">Next</span>-->
-<!--    </button>-->
-<!--</div>-->
 
 <script>
 	$(window).on("load", function(){
