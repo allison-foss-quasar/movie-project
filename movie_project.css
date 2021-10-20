@@ -1,5 +1,5 @@
 body{
-    background-color: tan;
+    background-color: black;
 }
 
 .loader-wrapper {
@@ -82,6 +82,7 @@ img {
     height: 25em;
 }
 
-.navbar, #addMovie{
-    background-color: lightyellow;
+.navbar, #addMovie, .footer{
+    background-color: black;
+    color: lightyellow;
 }
